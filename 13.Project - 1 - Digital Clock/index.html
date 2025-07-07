@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project - 1 - Digital Clock</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 100vh */
+            background-color: #282c34;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .clock-container {
+            text-align: center;
+            background-color: #3a3f47;
+            padding: 20px;
+            border: 2px solid #61dafb ; /* Light blue border */
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            /* width: 300px; */
+            transition: background-color 0.3s ease;        
+        }
+        .clock {
+            font-size: 5rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <h1 class="clock">00:00:00</h1>
+        <audio src="./clock-1.mp3" preload="auto"></audio>
+        
+    </div>
+    <script>
+        setInterval(() => {
+            const el = document.querySelector('.clock');
+            const audio = document.querySelector('audio');
+            let time = new Date();
+            const opt = {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true,
+                timeZone: 'Asia/Kolkata' // Set the timezone to Asia/Kolkata
+            }
+            el.textContent = time.toLocaleTimeString('en-Us', opt);
+            audio.play();
+        }, 1000);
+        
+        /* const el = document.querySelector('.clock');
+        let time = new Date();
+        const opt = {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+            timeZone: 'Asia/Kolkata' // Set the timezone to Asia/Kolkata
+        }
+        el.textContent = time.toLocaleTimeString('en-Us', opt); */
+    </script>
+</body>
+</html>
